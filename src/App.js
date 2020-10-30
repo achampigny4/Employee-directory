@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './App.css';
-import Employee from './employee';
+import Employee from './components/employee';
+import Header from './components/header';
 
 
 function App() {
@@ -32,11 +33,12 @@ function App() {
 
  return (
    <div className="App">
-     <h1>Employee Directory</h1>
+     <Header />
      <form className="search-form" onSubmit={getSearch}>
        <input className="search-bar" type="text" value={search} onChange={updateSearch} />
        <button className="search-button" type="submit">Search</button>
      </form>
+     <br/>
      {employees.map(employee => (
        <Employee
        key={employee.id.value}
@@ -44,7 +46,8 @@ function App() {
        fname={employee.name.first}
        lname={employee.name.last}
        email={employee.email}
-       phone={employee.cell}/>
+       phone={employee.cell}
+       />
      ))};
     </div>
   );
